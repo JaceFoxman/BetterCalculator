@@ -1,11 +1,12 @@
-﻿Option Explicit On
-Option Strict On
-Option Compare Text
-'Jason Permann
+﻿'Jason Permann
 'Spring 2025
 'RCET2265
 'Better Calculator
 'https://github.com/JaceFoxman/BetterCalculator.git
+
+Option Explicit On
+Option Strict On
+Option Compare Text
 
 Imports System.Diagnostics.Eventing.Reader
 Imports System.Linq.Expressions
@@ -18,8 +19,6 @@ Module BetterCalculator
         Dim variable1 As Integer
         Dim variable2 As Integer
         Dim nextLoop As Boolean = False
-
-
 
         'Boot up menu 
         Console.WriteLine("Please enter two numbers. Enter " & "Q" & " at any time to quit")
@@ -39,10 +38,11 @@ Module BetterCalculator
                     nextLoop = True
 
                 Catch ex As Exception
-                    If userInput <> "Q" Then Console.WriteLine("Please enter a valid number")
+                    If userInput <> "Q" Then Console.WriteLine($"You entered {userInput}, please enter a whole number")
                 End Try
             Loop While userInput <> "Q" And nextLoop = False
 
+            Console.WriteLine()
             nextLoop = False
 
             Do While userInput <> "Q" And nextLoop = False
@@ -56,10 +56,11 @@ Module BetterCalculator
                     nextLoop = True
 
                 Catch ex As Exception
-                    If userInput <> "Q" Then Console.WriteLine("Please enter a valid number")
+                    If userInput <> "Q" Then Console.WriteLine($"You entered {userInput}, please enter a whole number")
                 End Try
             Loop
 
+            Console.WriteLine()
             nextLoop = False
 
             Do While userInput <> "Q" And nextLoop = False
@@ -68,6 +69,8 @@ Module BetterCalculator
 
                 userInput = Console.ReadLine()
                 Try
+                    nextLoop = True
+
                     Select Case userInput
 
                         Case = "1"
@@ -82,15 +85,16 @@ Module BetterCalculator
                         Case = "4"
                             Console.WriteLine($"You entered {userInput}")
                             Console.WriteLine($"{variable1} * {variable2} = {variable1 * variable2}")
+                        Case Else
+                            nextLoop = False
                     End Select
 
-                    nextLoop = True
-
                 Catch ex As Exception
-                    If userInput <> "Q" Then Console.WriteLine("Please enter a valid number")
+                    If userInput <> "Q" Then Console.WriteLine($"You entered {userInput}, Choose one of the following options: 1.Add 2.Subtract 3.Multiply 4.Divide")
                 End Try
             Loop
 
+            Console.WriteLine()
             nextLoop = False
 
         Loop Until userInput = "Q" And nextLoop = False
