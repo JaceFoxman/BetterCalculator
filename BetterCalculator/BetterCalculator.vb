@@ -65,9 +65,14 @@ Module BetterCalculator
 
             Do While userInput <> "Q" And nextLoop = False
                 'choose operator
-                Console.WriteLine("Choose one of the following options: 1.Add 2.Subtract 3.Multiply 4.Divide")
+                Console.WriteLine("Choose one of the following options:" & vbNewLine _
+                                  & "1.Add" & vbNewLine _
+                                  & "2.Subtract" & vbNewLine _
+                                  & "3.Multiply" & vbNewLine _
+                                  & "4.Divide")
 
                 userInput = Console.ReadLine()
+
                 Try
                     nextLoop = True
 
@@ -81,16 +86,20 @@ Module BetterCalculator
                             Console.WriteLine($"{variable1} - {variable2} = {variable1 - variable2}")
                         Case = "3"
                             Console.WriteLine($"You entered {userInput}")
-                            Console.WriteLine($"{variable1} / {variable2} = {variable1 / variable2}")
+                            Console.WriteLine($"{variable1} * {variable2} = {variable1 * variable2}")
                         Case = "4"
                             Console.WriteLine($"You entered {userInput}")
-                            Console.WriteLine($"{variable1} * {variable2} = {variable1 * variable2}")
+                            Console.WriteLine($"{variable1} / {variable2} = {variable1 / variable2}")
                         Case Else
                             nextLoop = False
                     End Select
 
                 Catch ex As Exception
-                    If userInput <> "Q" Then Console.WriteLine($"You entered {userInput}, Choose one of the following options: 1.Add 2.Subtract 3.Multiply 4.Divide")
+                    If userInput <> "Q" Then Console.WriteLine($"You entered {userInput}, Choose one of the following options:" & vbNewLine _
+                                  & "1.Add" & vbNewLine _
+                                  & "2.Subtract" & vbNewLine _
+                                  & "3.Multiply" & vbNewLine _
+                                  & "4.Divide")
                 End Try
             Loop
 
